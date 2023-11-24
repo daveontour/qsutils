@@ -74,6 +74,16 @@ func (l *List) Front() (*Element, bool) {
 	return l.root.next, true
 }
 
+// FrontPop returns the first element of list l or nil if the list is empty and then removes the element from the list
+func (l *List) FrontPop() (*Element, bool) {
+	if l.len == 0 {
+		return nil, false
+	}
+	e := l.root.next
+	l.remove(e)
+	return e, true
+}
+
 // Back returns the last element of list l or nil if the list is empty.
 func (l *List) Back() (*Element, bool) {
 	if l.len == 0 {
